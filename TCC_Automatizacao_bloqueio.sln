@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC_Automatizacao_bloqueio", "TCC_Automatizacao_bloqueio\TCC_Automatizacao_bloqueio.csproj", "{C48D54F8-B767-4D26-99D9-6E826486B0B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC_Automatizacao_bloqueio", "TCC_Automatizacao_bloqueio\TCC_Automatizacao_bloqueio.csproj", "{011AF169-6C08-4185-8605-61F4DA79063C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C48D54F8-B767-4D26-99D9-6E826486B0B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C48D54F8-B767-4D26-99D9-6E826486B0B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C48D54F8-B767-4D26-99D9-6E826486B0B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C48D54F8-B767-4D26-99D9-6E826486B0B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011AF169-6C08-4185-8605-61F4DA79063C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011AF169-6C08-4185-8605-61F4DA79063C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011AF169-6C08-4185-8605-61F4DA79063C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011AF169-6C08-4185-8605-61F4DA79063C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5403C830-5048-41CE-B59D-2F3AA7E37718}
+		SolutionGuid = {EAE231B6-D3A4-4A0C-9610-B6C668AD22B1}
 	EndGlobalSection
 EndGlobal
