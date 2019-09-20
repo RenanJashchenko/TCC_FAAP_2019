@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TCC_Automatizacao_bloqueio.Models;
 
 namespace TCC_Automatizacao_bloqueio.Models
 {
@@ -13,6 +14,12 @@ namespace TCC_Automatizacao_bloqueio.Models
         {
         }
 
-        public DbSet<TCC_Automatizacao_bloqueio.Models.Usuario> Usuario { get; set; }
+        public DbSet<User> User { get; set; }
+
+        public DbSet<Department> Department { get; set; }
+
+        public DbSet<TicketRecord> TicketRecord { get; set; }
+
+
     }
 }
