@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TCC_Automatizacao_bloqueio.Models;
 using TCC_Automatizacao_bloqueio.Data;
+using TCC_Automatizacao_bloqueio.Services;
 
 namespace TCC_Automatizacao_bloqueio
 {
@@ -42,6 +43,7 @@ namespace TCC_Automatizacao_bloqueio
                     builder => builder.MigrationsAssembly("TCC_Automatizacao_bloqueio")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
