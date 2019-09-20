@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TCC_Automatizacao_bloqueio.Models;
+using TCC_Automatizacao_bloqueio.Data;
 
 namespace TCC_Automatizacao_bloqueio
 {
@@ -39,14 +40,17 @@ namespace TCC_Automatizacao_bloqueio
             services.AddDbContext<TCC_Automatizacao_bloqueioContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("TCC_Automatizacao_bloqueioContext"), 
                     builder => builder.MigrationsAssembly("TCC_Automatizacao_bloqueio")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
