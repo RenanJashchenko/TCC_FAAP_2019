@@ -13,9 +13,12 @@ namespace TCC_Automatizacao_bloqueio.Controllers
 
         private readonly UserService _userService;
 
-        public UsersController(UserService userService)
+        private readonly DepartmentService _departmentService;
+
+        public UsersController(UserService userService, DepartmentService departmentService)
         {
             _userService = userService;
+            _departmentService = departmentService;
         }
         public IActionResult Index()
         {
@@ -25,7 +28,9 @@ namespace TCC_Automatizacao_bloqueio.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departments = _departmentService.FindAll();
+            var viewmodel = new UserFormViewModel { Departments = departments };
+            return View(viewmodel);
         }
 
         [HttpPost]

@@ -44,6 +44,7 @@ namespace TCC_Automatizacao_bloqueio
 
             services.AddScoped<SeedingService>();
             services.AddScoped<UserService>();
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

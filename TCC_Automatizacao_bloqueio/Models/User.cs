@@ -17,6 +17,8 @@ namespace TCC_Automatizacao_bloqueio.Models
 
         public Department Department { get; set; }
 
+        public int DepartmentId { get; set; }
+
         public ICollection<TicketRecord> Tickets { get; set; } = new List<TicketRecord>();
 
         public User()

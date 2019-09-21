@@ -1,4 +1,4 @@
-﻿@model TCC_Automatizacao_bloqueio.Models.User
+﻿@model TCC_Automatizacao_bloqueio.Models.UserFormViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -18,26 +18,31 @@
 
             <div class="form-group">
 
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="User.Name" class="control-label"></label>
 
-                <input asp-for="Name" class="form-control" />
-
-            </div>
-
-            <div class="form-group">
-
-                <label asp-for="Email" class="control-label"></label>
-
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="User.Name" class="form-control" />
 
             </div>
 
             <div class="form-group">
 
-                <label asp-for="BirthDate" class="control-label"></label>
+                <label asp-for="User.Email" class="control-label"></label>
 
-                <input asp-for="BirthDate" class="form-control" />
+                <input asp-for="User.Email" class="form-control" />
 
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="User.BirthDate" class="control-label"></label>
+
+                <input asp-for="User.BirthDate" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="User.DepartmentId" class="control-label"></label>
+                <select asp-for="User.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-control"></select>
             </div>
 
             <div class="form-group">
