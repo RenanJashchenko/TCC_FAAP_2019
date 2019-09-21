@@ -19,5 +19,11 @@ namespace TCC_Automatizacao_bloqueio.Services
         {
             return _context.User.ToList();
         }
+
+        public void Insert (User obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }
