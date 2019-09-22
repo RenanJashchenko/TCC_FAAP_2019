@@ -39,6 +39,14 @@ namespace TCC_Automatizacao_bloqueio.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(User user)
         {
+
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new UserFormViewModel { Departments = departments, User = user };
+                return View(viewModel);
+            }
+
             _userService.Insert(user);
             return RedirectToAction(nameof(Index));
         }
@@ -108,6 +116,14 @@ namespace TCC_Automatizacao_bloqueio.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit (int id, User user)
         {
+
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new UserFormViewModel { Departments = departments, User = user };
+                return View(viewModel);
+            }
+
             if (id != user.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });

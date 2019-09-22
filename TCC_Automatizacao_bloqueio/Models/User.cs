@@ -10,11 +10,17 @@ namespace TCC_Automatizacao_bloqueio.Models
     public class User
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="É necessário inserir o nome")]
+        [StringLength(60, MinimumLength =3, ErrorMessage ="O tamanho do nome deve estar em 3 e 60")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "É necessário inserir o E-mail")]
+        [EmailAddress(ErrorMessage ="Entre com o um E-mail valido")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        
+
+        [Required(ErrorMessage = "É necessário inserir a data de nascimento")]
         [Display (Name = "Data de nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]

@@ -13,7 +13,7 @@
 <div class="row">
 
     <div class="col-md-4">
-        
+
         <form asp-action="Create">
 
             <div class="form-group">
@@ -21,6 +21,8 @@
                 <label asp-for="User.Name" class="control-label"></label>
 
                 <input asp-for="User.Name" class="form-control" />
+
+                <span asp-validation-for="User.Name" class="text-danger"></span>
 
             </div>
 
@@ -30,6 +32,8 @@
 
                 <input asp-for="User.Email" class="form-control" />
 
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+
             </div>
 
             <div class="form-group">
@@ -37,6 +41,8 @@
                 <label asp-for="User.BirthDate" class="control-label"></label>
 
                 <input asp-for="User.BirthDate" class="form-control" />
+
+                <span asp-validation-for="User.BirthDate" class="text-danger"></span>
 
             </div>
 
@@ -50,7 +56,11 @@
             </div>
 
         </form>
-    
+
     </div>
 
 </div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
