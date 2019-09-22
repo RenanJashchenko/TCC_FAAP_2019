@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace TCC_Automatizacao_bloqueio.Models
 {
@@ -11,8 +12,12 @@ namespace TCC_Automatizacao_bloqueio.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         
+        [Display (Name = "Data de nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
         public Department Department { get; set; }
