@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TCC_Automatizacao_bloqueio.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TCC_Automatizacao_bloqueio.Services
 {
@@ -28,7 +29,7 @@ namespace TCC_Automatizacao_bloqueio.Services
 
         public User FindById (int id)
         {
-            return _context.User.FirstOrDefault(obj => obj.Id == id);
+            return _context.User.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
         public void Remove (int id)
