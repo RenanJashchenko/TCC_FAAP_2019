@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TCC_Automatizacao_bloqueio.Models;
 using Microsoft.EntityFrameworkCore;
+using TCC_Automatizacao_bloqueio.Services.Exceptions;
 
 namespace TCC_Automatizacao_bloqueio.Services
 {
@@ -37,6 +38,23 @@ namespace TCC_Automatizacao_bloqueio.Services
             var obj = _context.User.Find(id);
             _context.User.Remove(obj);
             _context.SaveChanges();
+        }
+
+        public void Update (User obj)
+        {
+            if (!_context.User.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not found");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
         }
     }
 }
