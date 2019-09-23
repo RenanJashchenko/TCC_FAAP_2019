@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TCC_Automatizacao_bloqueio.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace TCC_Automatizacao_bloqueio.Services
 {
@@ -16,9 +17,9 @@ namespace TCC_Automatizacao_bloqueio.Services
             _context = context;
         }
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

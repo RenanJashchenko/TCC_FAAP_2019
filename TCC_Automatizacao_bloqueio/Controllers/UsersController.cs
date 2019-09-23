@@ -22,43 +22,43 @@ namespace TCC_Automatizacao_bloqueio.Controllers
             _userService = userService;
             _departmentService = departmentService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var list = _userService.FindAll();
+            var list = await _userService.FindAllAsync();
             return View(list);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var departments = _departmentService.FindAll();
+            var departments = await _departmentService.FindAllAsync();
             var viewmodel = new UserFormViewModel { Departments = departments };
             return View(viewmodel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
+        public async Task<IActionResult> Create(User user)
         {
 
             if (!ModelState.IsValid)
             {
-                var departments = _departmentService.FindAll();
+                var departments = await _departmentService.FindAllAsync();
                 var viewModel = new UserFormViewModel { Departments = departments, User = user };
                 return View(viewModel);
             }
 
-            _userService.Insert(user);
+            await _userService.InsertAsync(user);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete (int? id)
+        public async Task<IActionResult> Delete (int? id)
         {
             if (id == null)
             {
                 return RedirectToAction(nameof(Error),new { message ="Id not provided"});
             }
 
-            var obj = _userService.FindById(id.Value);
+            var obj = await _userService.FindByIdAsync(id.Value);
 
             if (obj == null)
             {
@@ -70,20 +70,20 @@ namespace TCC_Automatizacao_bloqueio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Delete (int id)
+        public  async Task<IActionResult> Delete (int id)
         {
-            _userService.Remove(id);
+            await _userService.RemoveAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        public  IActionResult Details (int? id)
+        public  async Task<IActionResult> Details (int? id)
         {
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
-            var obj = _userService.FindById(id.Value);
+            var obj = await _userService.FindByIdAsync(id.Value);
 
             if (obj == null)
             {
@@ -93,7 +93,7 @@ namespace TCC_Automatizacao_bloqueio.Controllers
             return View(obj);
         }
 
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
 
             if (id == null)
@@ -101,25 +101,25 @@ namespace TCC_Automatizacao_bloqueio.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
-            var obj = _userService.FindById(id.Value);
+            var obj = await _userService.FindByIdAsync(id.Value);
             if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
-            List<Department> departments = _departmentService.FindAll();
+            List<Department> departments = await _departmentService.FindAllAsync();
             UserFormViewModel viewModel = new UserFormViewModel { Departments = departments, User = obj };
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit (int id, User user)
+        public async Task<IActionResult> Edit (int id, User user)
         {
 
             if (!ModelState.IsValid)
             {
-                var departments = _departmentService.FindAll();
+                var departments = await _departmentService.FindAllAsync();
                 var viewModel = new UserFormViewModel { Departments = departments, User = user };
                 return View(viewModel);
             }
@@ -131,7 +131,7 @@ namespace TCC_Automatizacao_bloqueio.Controllers
 
             try
             {
-                _userService.Update(user);
+                await _userService.UpdateAsync(user);
 
 
                 return RedirectToAction(nameof(Index));
