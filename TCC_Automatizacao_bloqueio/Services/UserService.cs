@@ -35,9 +35,18 @@ namespace TCC_Automatizacao_bloqueio.Services
 
         public async Task RemoveAsync (int id)
         {
-            var obj = await _context.User.FindAsync(id);
-            _context.User.Remove(obj);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                var obj = await _context.User.FindAsync(id);
+                _context.User.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new IntegrityException("Não é possível remover usuários com passagens atreladas");    
+            }
+                                 
         }
 
         public async Task UpdateAsync (User obj)
