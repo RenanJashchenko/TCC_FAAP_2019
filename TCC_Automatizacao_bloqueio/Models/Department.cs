@@ -26,5 +26,14 @@ namespace TCC_Automatizacao_bloqueio.Models
         {
             Users.Add(user);
         }
+
+        public double TotalTicket (DateTime initial, DateTime final)
+        {
+
+            return Users.Sum(user => user.TotalTickets(initial, final));
+
+        }
+
+
     }
 }
