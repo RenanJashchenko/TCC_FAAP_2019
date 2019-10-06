@@ -24,8 +24,12 @@
                 <input asp-for="Amount" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <label asp-for="Status" class="control-label">Status: Pending = 0, Billed = 1 and Canceled = 2 </label>
+                <select asp-for="Status" class="form-control">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="User" class="control-label"></label>
@@ -33,7 +37,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default"/>
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
 
         </form>
