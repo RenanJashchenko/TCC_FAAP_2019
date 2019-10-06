@@ -11,10 +11,12 @@ namespace TCC_Automatizacao_bloqueio.Controllers
     {
 
         private readonly TicketRecordService _ticketRecordService;
+        private readonly UserService _userService;
 
-        public TicketRecordsController(TicketRecordService ticketRecordService)
+        public TicketRecordsController(TicketRecordService ticketRecordService, UserService userService)
         {
             _ticketRecordService = ticketRecordService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -62,9 +64,11 @@ namespace TCC_Automatizacao_bloqueio.Controllers
             return View(result);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var users = await _userService.FindAllAsync();
+            var viewModel = new TicketRecordFormViewModel { Users = users };
+            return View(viewModel);
         }
 
 

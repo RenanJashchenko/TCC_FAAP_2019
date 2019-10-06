@@ -20,6 +20,8 @@ namespace TCC_Automatizacao_bloqueio.Models
 
         public User User { get; set; }  
 
+        public int UserId { get; set; }
+
         public TicketRecord()
         {
         }

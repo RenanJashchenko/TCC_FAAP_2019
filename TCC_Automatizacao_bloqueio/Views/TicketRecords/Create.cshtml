@@ -1,4 +1,4 @@
-﻿@model TCC_Automatizacao_bloqueio.Models.TicketRecord
+﻿@model TCC_Automatizacao_bloqueio.Models.TicketRecordFormViewModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -16,24 +16,25 @@
         <form asp-action="Create">
 
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <label asp-for="TicketRecord.Date" class="control-label"></label>
+                <input asp-for="TicketRecord.Date" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
+                <label asp-for="TicketRecord.Amount" class="control-label"></label>
+                <input asp-for="TicketRecord.Amount" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label">Status: Pending = 0, Billed = 1 and Canceled = 2 </label>
-                <select asp-for="Status" class="form-control">
+                <label asp-for="TicketRecord.Status" class="control-label">Status: Pending = 0, Billed = 1 and Canceled = 2 </label>
+                <select asp-for="TicketRecord.Status" class="form-control">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
                 </select>
             </div>
+
             <div class="form-group">
-                <label asp-for="User" class="control-label"></label>
-                <input asp-for="User" class="form-control" />
+                <label asp-for="TicketRecord.UserId" class="control-label"></label>
+                <select asp-for="TicketRecord.UserId" asp-items="@(new SelectList(Model.Users,"Id","Name"))" class="form-control"></select>
             </div>
 
             <div class="form-group">
