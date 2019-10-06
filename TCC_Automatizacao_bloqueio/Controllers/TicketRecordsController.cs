@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TCC_Automatizacao_bloqueio.Models;
 using TCC_Automatizacao_bloqueio.Services;
 namespace TCC_Automatizacao_bloqueio.Controllers
 {
@@ -60,5 +61,22 @@ namespace TCC_Automatizacao_bloqueio.Controllers
 
             return View(result);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(TicketRecord ticketRecord)
+        {
+            _ticketRecordService.Insert(ticketRecord);
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

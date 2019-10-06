@@ -52,7 +52,11 @@ namespace TCC_Automatizacao_bloqueio.Services
 
         }
 
-
+        public void Insert (TicketRecord obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
 
     }
 }
