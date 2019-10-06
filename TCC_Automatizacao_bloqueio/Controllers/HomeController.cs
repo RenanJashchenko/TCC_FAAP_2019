@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TCC_Automatizacao_bloqueio.Models;
 
+
 namespace TCC_Automatizacao_bloqueio.Controllers
 {
     public class HomeController : Controller
